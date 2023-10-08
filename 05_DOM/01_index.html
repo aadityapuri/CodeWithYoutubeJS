@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .bg-col{
+      background-color: #212121;
+      color: #fff;
+    }
+  </style>
+</head>
+<body class="bg-col">
+  <div class="container">
+    <h1>DOM learning on YT <b style="display: none;">This is a span</b></h1>
+    <h3>Lorem Ipsum</h3>
+  </div>
+  <div class="parent">
+    <div class="day">Mon</div>
+    <div class="day">Tues</div>
+    <div class="day">Wed</div>
+    <div class="day">Thurs</div>
+    <div class="day">Fri</div>
+    <div class="day">Sat</div>
+    <div class="day">Sun</div>
+  </div>
+
+  <ul class="language">
+    <li>Javascript</li>
+  </ul>
+</body>
+<script>
+  const parent = document.querySelector('.parent');
+  // console.log(parent);
+  // console.log(parent.children[0].innerHTML);
+
+  // console.log(parent.firstElementChild);
+  // console.log(parent.lastElementChild);
+
+  const dayOne = document.querySelector('.day');
+  // console.log(dayOne);
+  // console.log(dayOne.parentElement);
+  // console.log(dayOne.nextElementSibling);
+
+  // console.log("Nodes: ",parent.childNodes); // This always returns total no. of elements + line breaks (Even shifting to next line is represented as a text). Eg: Here the resul will be 15 as 7 are the divs and 8 are the next line texts.
+
+  //Creating element
+
+  // const div = document.createElement('div');
+  // div.className = "child";
+  // div.id = Math.round(Math.random()*10 +1);
+  // div.setAttribute("title","Generated Title");
+  // div.style.padding = "12px";
+  // div.style.color = "orange";
+  // // div.innerText = "Chai aur Code";
+  // const addText = document.createTextNode("ChaiAurCode");
+  // div.appendChild(addText);
+  // document.body.appendChild(div);
+
+  // console.log(div);
+
+
+  // through functions
+
+  function addLang(langName){
+    const li = document.createElement('li');
+    li.innerHTML = `${langName}`;
+    document.querySelector('.language').appendChild(li);
+  }
+  addLang("python"); // by this it has to traverse all the tree
+
+  // Optimize it
+  function addLangOpti(langName){
+    const li = document.createElement('li');
+    li.appendChild(document.createTextNode(langName));
+    document.querySelector('.language').appendChild(li);
+  }
+  addLangOpti('typescript');
+
+  //Editing the element
+  
+  const secondLang = document.querySelector("li:nth-child(2)");
+  console.log(secondLang);
+  //secondLang.innerHTML = "Mojo"; // not optimized
+  const newLi = document.createElement("li");
+  newLi.textContent="Mojo";
+  secondLang.replaceWith(newLi);
+  // there is one more method through which we csn implement this
+  const firstLang = document.querySelector("li:first-child");
+  firstLang.outerHTML = "<li>TypeScript</li>";
+
+  //Remove
+  const lastLang = document.querySelector(".language").lastElementChild;
+  // const lastLang = document.querySelector('li:last-child');
+  lastLang.remove();
+
+
+</script>
+</html>
+
+
+<!-- 
+  DOM Manipulation
+
+  document.querySelector("h1").innerText This will return values that are formatted (if the display property is set to none then it will not display it)
+  vs 
+  document.querySelector("h1").textContent This will return the text independent of the formatting styles (this displays all the content even if the display property is set to none)
+  vs 
+  document.querySelector("h1").innerHTML This will give us the whole thing that is written in that HTML tag (it also gives us the inline tags that are used on the way. Eg: <b> tag)
+  
+  console.dir(document) gives all the functions that includes features eg location
+
+  forEach doesn't work on HTMLCollection, it has to be converted into Array
+
+  if we want to use map in nodeList then we have to convert it into Arrays
+
+  
+  -->
