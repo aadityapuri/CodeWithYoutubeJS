@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+  <h2>Amazing image</h2>
+  <div >
+      <ul id="images">
+          <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+          <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+          <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+          <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" <!--onclick="alert('owl')"--></li>
+          <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+          <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+      </ul>
+ </div>
+</body>
+<script>
+  // document.getElementById('owl').onclick = function(){
+  //   alert("owl clicked");
+  // }
+  //attachEvent()
+  // jQuery - on
+  //type, timestamp, defaultPrevented
+  //target, toElement, srcElement, currentTarget
+  //clientX, clientY, screenX, screeY
+  //altkey, ctrlkey, shiftkey, keyCode
+
+
+  document.getElementById('owl').addEventListener('click',function(e){
+    // alert('owl clicked again');
+    console.log('owl Clicked!!');
+    console.log(e);
+  });
+  document.getElementById('images').addEventListener('click',function(e){
+    // alert('images Clicked!!');
+    console.log('images Clicked!!');
+    // e.stopPropagation();
+    console.log(e);
+  }, true);
+  // This is bubbling and capturing, bubbling refers to the concept of execution of the inner element first and then the outer element whereas capturing refers to the execution of outer element first and then the inner element.
+  // if we set both to true then the capturing will happen. Even if we set the outer one or the bigger one to be true, it will behaves as capturing and to prevent this behaviour we can use stopPropagation method.
+
+  document.getElementById('google').addEventListener('click', (e)=>{
+    e.preventDefault();
+    e.stopPropagation();
+    console.log("google click");
+  });
+
+  document.querySelector('#images').addEventListener('click',function(e){
+    if (e.target.tagName === 'IMG')
+    e.target.parentNode.remove();
+  })
+
+</script>
+</html>
