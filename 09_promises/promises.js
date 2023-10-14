@@ -83,7 +83,9 @@ consumePromise5();
 // }
 // getAllUsers();
 
-fetch('https://api.github.com/users/aadityapuri')
+const promise6 = fetch('https://api.github.com/users/aadityapuri');
+
+promise6
 .then((response)=>{
   return response.json();
 })
