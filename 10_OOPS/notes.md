@@ -32,3 +32,4 @@ It traverses layer by layer starting from child to parent to its parent repeated
 
 Array -> Object -> null
 String -> Object -> null
+Function is also an object.
