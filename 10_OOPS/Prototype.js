@@ -22,3 +22,20 @@ String.prototype.trueLength = function(){
   console.log(`String's length is: ${this.trim().length}`);
 }
 myName.trueLength()
+
+// Prototypal Inheritance
+// Outdated Approach
+
+const Teacher = {
+  makeVideo: true
+}
+const TeachingSupport = {
+  isAvailable: false,
+  __proto__: Teacher
+}
+// or
+TeachingSupport.__proto__ = Teacher;
+
+// Modern Approach
+
+Object.setPrototypeOf(TeachingSupport, Teacher);

@@ -33,3 +33,5 @@ It traverses layer by layer starting from child to parent to its parent repeated
 Array -> Object -> null
 String -> Object -> null
 Function is also an object.
+
+We can add any property or method to any type or object in javascript by accessing the prototypal behavior. We can define the methods according to our need and link multiple objects through prototypal inheritance.
