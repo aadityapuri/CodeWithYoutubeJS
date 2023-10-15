@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Closures</title>
+</head>
+<body>
+  <button class="orange">Orange</button>
+  <button class="green">Green</button>
+</body>
+<script>
+  // document.querySelector('.orange').onclick = clickHandler('orange');
+  // document.querySelector('.green').onclick = clickHandler('green');
+  // function clickHandler(color){
+  //   document.body.style.backgroundColor = color;
+  // }
+  // Writing like this will execute the function and won't add any functionality to the buttons.
+  // Instead we have to return a function which can execcute by itself
+
+  document.querySelector('.orange').onclick = clickHandler('orange');
+  document.querySelector('.green').onclick = clickHandler('green');
+  function clickHandler(color){
+    return function(){
+      document.body.style.backgroundColor = color;
+    }
+  }
+  // By doing this the lexical scope of the function transfers to the onclick method and it will execute on clicking the button.
+</script>
+</html>
